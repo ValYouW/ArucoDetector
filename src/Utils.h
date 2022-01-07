@@ -3,21 +3,10 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/calib3d.hpp"
+#include "ArucoDetector.h"
 
 using namespace std;
 using namespace cv;
-
-TermCriteria TERM_CRIT = TermCriteria(TermCriteria::EPS + TermCriteria::MAX_ITER, 40, 0.001);
-
-struct ArucoResult {
-	vector<Point2f> corners;
-	int index = -1;
-};
-
-struct ArucoDict {
-	vector<vector<int>> sigs;
-	vector<vector<Point3f>> worldLoc;
-};
 
 Mat CAM_MTX = (Mat_<float>(3, 3) << 1000, 0.0, 500, 0.0, 1000, 500, 0.0, 0.0, 1.0);
 Mat CAM_DIST = (Mat_<float>(1, 4) << 0, 0, 0, 0);
